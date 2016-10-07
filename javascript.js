@@ -1,3 +1,4 @@
-function onclick() {
-    alert("toto");
+function buttonclick() {
+    var audio = document.getElementById("audio");
+       audio.play();
 }
