@@ -1,25 +1,17 @@
-<html>  
-    <head>  
-        <title>Your website</title>  
-        <script type="text/javascript" src="audio-player.js"></script>  
-        <script type="text/javascript">  
-            AudioPlayer.setup("otis.mp3", {  
-                width: 290
-            });
+<!DOCTYPE html>
+<html>
+<head>
+<title>Coucou la team</title>
+</head>
+<body>
 
-            function moo() {
-                AudioPlayer.embed("player", {soundFile: "/media/usb/Music/Otis.mp3", autostart: 'yes'});  
-            }
+<h1>Pie info</h1>
+<p>ssh pi@78.194.188.148</p>
+<br>
+<p>path: /home/pi/MediaCenter</p>
 
-            function foo() {
-                AudioPlayer.embed("player", {soundFile: "otis.mp3", autostart: 'yes'});  
-            }
-        </script>    
-    </head>  
-    <body>  
-        <div id="player"></div><br />
-        <a href="#" onClick="moo();">play file 1</a><br />
-        <a href="#" onClick="foo();">play file 2</a>
-    </body>  
-</html>  
-
+<h1>Access to music</h1>
+<button onclick="buttonclick()" stype="button" name="button">Click</button>
+<script src="javascript.js"></script>
+</body>
+</html>
