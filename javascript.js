@@ -1,0 +1,3 @@
+function onclick() {
+    alert("toto");
+}
