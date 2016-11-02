@@ -13,8 +13,10 @@ app.get('/toto', function (req, res) {
   res.send('it\' working!!!');     // or send a webpage you designed
 });
 
-var server = app.listen(80, function () {
+var server = app.listen(function () {
 
   console.log('Node Express Webserver Started');
 
 });
+
+console.log('Your friendly Express server, listening on port %s', server.address().port);
