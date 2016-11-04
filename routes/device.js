@@ -43,8 +43,12 @@ router.get('/parametres', function(req, res, next) {
   res.render('index', { title: 'Bigot Fuck you' });
 });
 
-router.get('/bigot', function(req, res, next) {
-  res.send('salut salope');
+router.get('/bigot/:toto', function(req, res, next) {
+  //get from url which user we want
+    var condition = {
+        "data": req.params.toto,
+    };
+  res.send('salut salope'+condition.data);
 });
 
 module.exports = router;
