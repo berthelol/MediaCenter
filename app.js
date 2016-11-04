@@ -10,6 +10,17 @@ var users = require('./routes/users');
 var device = require('./routes/device');
 
 var app = express();
+var MongoClient = require('mongodb').MongoClient;
+
+// Connect to the db
+MongoClient.connect("mongodb://localhost:27017/exampleDb", function(err, db) {
+  if(!err) {
+    console.log("We are connected");
+  }else if(err)
+  {
+    console.log("Error connecting: "+err);
+  }
+});
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
