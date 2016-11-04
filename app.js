@@ -16,7 +16,7 @@ var MongoClient = require('mongodb').MongoClient;
 //remeber to activate it
 MongoClient.connect("mongodb://localhost:27017/exampleDb", function(err, db) {
   if(!err) {
-    console.log("Mongodb connected is connected");
+    console.log("Mongodb is connected");
   }else if(err)
   {
     console.log("Error connecting: "+err);

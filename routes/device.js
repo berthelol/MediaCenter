@@ -48,7 +48,7 @@ router.get('/bigot/:toto', function(req, res, next) {
     var condition = {
         "data": req.params.toto,
     };
-  res.send('Tu à ecrit: '+condition.data);
+  res.send('Tu a ecrit: '+condition.data);
 });
 
 module.exports = router;
