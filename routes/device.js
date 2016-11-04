@@ -43,7 +43,7 @@ router.get('/parametres', function(req, res, next) {
 });
 
 router.get('/bigot', function(req, res, next) {
-  res.render('coucou toi');
+  res.send('salut salope');
 });
 
 module.exports = router;
