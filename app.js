@@ -15,6 +15,8 @@ var mongoose = require('mongoose');
 //mongoose.connect('mongodb://localhost/test');
 var db = mongoose.connection;
 
+var silence;
+
 db.on('error', console.error);
 db.once('open', function() {
   // Create your schemas and models here.
@@ -25,7 +27,7 @@ db.once('open', function() {
 });
 
 var Kitten = mongoose.model('Kitten', kittySchema);
-var silence = new Kitten({ name: 'Toto' });
+silence = new Kitten({ name: 'Toto' });
 console.log(silence.name); // 'Silence'
 
 });
