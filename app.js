@@ -10,18 +10,38 @@ var users = require('./routes/users');
 var device = require('./routes/device');
 
 var app = express();
-var MongoClient = require('mongodb').MongoClient;
+//var MongoClient = require('mongodb').MongoClient;
+var mongoose = require('mongoose');
 
+var db = mongoose.connection;
+
+db.on('error', console.error);
+db.once('open', function() {
+  // Create your schemas and models here.
+  var Schema = mongoose.Schema;
+  // create a schema
+  var kittySchema = mongoose.Schema({
+    name: String
+});
+
+var Kitten = mongoose.model('Kitten', kittySchema);
+var silence = new Kitten({ name: 'Silence' });
+console.log(silence.name); // 'Silence'
+
+
+});
+
+mongoose.connect('mongodb://localhost/test');
 // Connect to the db
 //remeber to activate it
-MongoClient.connect("mongodb://localhost:27017/exampleDb", function(err, db) {
+/*MongoClient.connect("mongodb://localhost:27017/exampleDb", function(err, db) {
   if(!err) {
     console.log("Mongodb is connected");
   }else if(err)
   {
     console.log("Error connecting: "+err);
   }
-});
+});*/
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
