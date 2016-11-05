@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 
-var foo = require('views/json.json');
+//var foo = require('views/json.json');
 //pH
 router.get('/pH/bacmoins', function(req, res, next) {
   res.render('index', { title: 'Bigot Fuck you' });
@@ -53,7 +53,7 @@ router.get('/bigot/:toto', function(req, res, next) {
   res.send('Tu a ecrit: '+condition.data);
 });
 router.get('/json', function(req, res, next) {
-  res.send(foo);
+   res.sendFile(path.normalize(__dirname + '/views/json.json'));
 });
 
 module.exports = router;
