@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 
+var foo = require('views/json.json');
 //pH
 router.get('/pH/bacmoins', function(req, res, next) {
   res.render('index', { title: 'Bigot Fuck you' });
@@ -43,12 +44,16 @@ router.get('/parametres', function(req, res, next) {
   res.render('index', { title: 'Bigot Fuck you' });
 });
 
+//test
 router.get('/bigot/:toto', function(req, res, next) {
   //get from url which user we want
     var condition = {
         "data": req.params.toto,
     };
   res.send('Tu a ecrit: '+condition.data);
+});
+router.get('/json', function(req, res, next) {
+  res.send(foo);
 });
 
 module.exports = router;
