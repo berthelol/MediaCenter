@@ -12,7 +12,7 @@ var device = require('./routes/device');
 var app = express();
 //var MongoClient = require('mongodb').MongoClient;
 var mongoose = require('mongoose');
-
+mongoose.connect('mongodb://localhost/test');
 var db = mongoose.connection;
 
 db.on('error', console.error);
@@ -28,10 +28,9 @@ var Kitten = mongoose.model('Kitten', kittySchema);
 var silence = new Kitten({ name: 'Silence' });
 console.log(silence.name); // 'Silence'
 
-
 });
 
-mongoose.connect('mongodb://localhost/test');
+
 // Connect to the db
 //remeber to activate it
 /*MongoClient.connect("mongodb://localhost:27017/exampleDb", function(err, db) {
