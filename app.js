@@ -12,29 +12,19 @@ var device = require('./routes/device');
 var app = express();
 //var MongoClient = require('mongodb').MongoClient;
 var mongoose = require('mongoose');
+var Schema = mongoose.Schema;
 //mongoose.connect('mongodb://localhost/test');
 var db = mongoose.connection;
 
-var silence;
 
-db.on('error', console.error);
-db.once('open', function() {
-  // Create your schemas and models here.
-  var Schema = mongoose.Schema;
-  // create a schema
-  var kittySchema = mongoose.Schema({
-    name: String
+// Represent a file on the server
+var fileSchema = new mongoose.Schema({
+	name: {type: String, required: true}
 });
 
-var Kitten = mongoose.model('Kitten', kittySchema);
-silence = new Kitten({ name: 'Toto' });
-console.log(silence.name); // 'Silence'
-
-});
-silence.save(function (err, silence) {
-  if (err) return console.error(err);
-
-});
+var _Schema = mongoose.model('File', fileSchema);
+var test = new _Schema({name:"toto"});
+console.log(test.name);
 
 
 // Connect to the db
