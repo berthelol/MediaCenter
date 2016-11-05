@@ -23,7 +23,7 @@ var fileSchema = new mongoose.Schema({
 });
 
 var _Schema = mongoose.model('File', fileSchema);
-var test = new _Schema({name:"toto"});
+var test = new _Schema({name:"tata"});
 console.log(test.name);
 
 
