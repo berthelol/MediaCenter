@@ -54,7 +54,7 @@ router.get('/bigot/:toto', function(req, res, next) {
   res.send('Tu a ecrit: '+condition.data);
 });
 router.get('/json', function(req, res, next) {
-   res.sendFile(path.normalize(__dirname + '/views/json.json'));
+   res.sendFile(path.normalize(__dirname + '../views/json.json'));
 });
 
 module.exports = router;
