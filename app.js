@@ -25,8 +25,12 @@ db.once('open', function() {
 });
 
 var Kitten = mongoose.model('Kitten', kittySchema);
-var silence = new Kitten({ name: 'Silence' });
+var silence = new Kitten({ name: 'Toto' });
 console.log(silence.name); // 'Silence'
+
+});
+silence.save(function (err, silence) {
+  if (err) return console.error(err);
 
 });
 
