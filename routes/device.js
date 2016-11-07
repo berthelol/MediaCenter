@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 var path = require('path');
 // import the global schema, this can be done in any file that needs the model
-require('/../db/data.js')();
+require('./../db/data.js')();
 // grab the person model object
 var Data = mongoose.model('Data');
 
