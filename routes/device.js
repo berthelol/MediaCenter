@@ -1,6 +1,11 @@
 var express = require('express');
 var router = express.Router();
 var path = require('path');
+// import the global schema, this can be done in any file that needs the model
+require('/../db/data.js')();
+// grab the person model object
+var Data = mongoose.model('Data');
+
 
 //var foo = require('views/json.json');
 //pH
@@ -42,7 +47,39 @@ router.get('/temp/historique', function(req, res, next) {
 
 //Parametres
 router.get('/parametres', function(req, res, next) {
-  res.render('index', { title: 'Bigot Fuck you' });
+
+  mongoose.connect('mongodb://localhost/persons', function(err) {
+    if (err) {
+      throw err;
+    }
+
+    Data.create({
+      name: 'bill',
+      age: 25,
+    }, function(err, bill) {
+      if (err) {
+        throw err;
+      }
+      console.log('People added to db: %s', bill.toString());
+      res.send('Crée: '+bill.toString());
+      Data.find({}, function(err, people) {
+        if (err) {
+          throw err;
+        }
+
+        people.forEach(function(person) {
+          console.log('People in the db: %s', person.toString());
+        });
+
+        // make sure to clean things up after we're done
+        setTimeout(function() {
+          cleanup();
+        }, 2000);
+      });
+    });
+  });
+
+
 });
 
 //test
