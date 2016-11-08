@@ -21,7 +21,7 @@ var Schema = mongoose.Schema;
 
   	var self = this;
   	this.add = function(data, callback) {
-  		user = new User({data});
+  		user = new User(data);
   	  callback(user);
   	};
   	this._Model = User;
