@@ -15,7 +15,7 @@ var Schema = mongoose.Schema;
 
   	// Recipient must be : { group: _id } or { device: _id }
   	this.add = function(_name, _age, callback) {
-  		order = new Order({name:_name,age:_age});
+  		order = new Data({name:_name,age:_age});
   	  callback(order);
   	};
   	this._Model = Data;
