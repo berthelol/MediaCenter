@@ -23,7 +23,7 @@ router.get('/pH/historique', function(req, res, next) {
   res.render('index', { title: 'Bigot Fuck you' });
 });
 //Chlore
-router.get('/chlore/bacmoins', function(req, res, next) {
+router.get('/chlore/bac', function(req, res, next) {
   res.render('index', { title: 'Bigot Fuck you' });
 });
 
@@ -45,22 +45,39 @@ router.get('/temp/historique', function(req, res, next) {
 
 //Parametres
 router.get('/parametres', function(req, res, next) {
+  res.render('index', { title: 'Bigot Fuck you' });
+});
 
-  var test = new toto({name:"bill",age:45});
-  res.send("new created data :"+ test.name);
-
+router.get('/json', function(req, res, next) {
+   res.sendFile(path.normalize(__dirname + '/test.json'));
 });
 
 //test
-router.get('/bigot/:toto', function(req, res, next) {
+router.get('/test', function(req, res, next) {
+  var test = new toto({name:"bill",age:45});
+  res.send("new created data :"+ test.name);
+});
+
+router.get('/test2', function(req, res, next) {
+  toto.create({
+    name: 'bill',
+    age: 25,
+  }, function(err, bill) {
+    if (err) {
+      throw err;
+    }
+    res.send('People added to db: %s', bill.toString());
+
+  });
+});
+});
+
+router.get('/test/:toto', function(req, res, next) {
   //get from url which user we want
     var condition = {
         "data": req.params.toto,
     };
   res.send('Tu a ecrit: '+condition.data);
-});
-router.get('/json', function(req, res, next) {
-   res.sendFile(path.normalize(__dirname + '/test.json'));
 });
 
 module.exports = router;
