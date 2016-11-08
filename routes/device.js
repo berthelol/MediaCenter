@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 var path = require('path');
 // import the global schema, this can be done in any file that needs the model
-var Data = require('../db/data');
+var toto = require('../db/data');
 
 
 //var foo = require('views/json.json');
@@ -46,7 +46,7 @@ router.get('/temp/historique', function(req, res, next) {
 //Parametres
 router.get('/parametres', function(req, res, next) {
 
-  var test = new Data({name:"bill",age:45});
+  var test = new toto({name:"bill",age:45});
   res.send("new created data :"+ test.name);
 
 });
