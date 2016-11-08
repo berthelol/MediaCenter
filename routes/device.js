@@ -51,11 +51,11 @@ router.get('/parametres', function(req, res, next) {
       lastname:"Berthelot"
     },
     pool:{
-      size:{35},
-      type:{"ground"},
-      heated:{false}
+      size:35,
+      type:"ground",
+      heated:false
     },
-    initialize:{true}
+    initialize:true
 };
 var user = User.add(data
   ,function(user)
