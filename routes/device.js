@@ -45,8 +45,7 @@ router.get('/temp/historique', function(req, res, next) {
 
 //Parametres
 router.get('/parametres', function(req, res, next) {
-var user = User.add(
-  {
+  var data = {
     name:{
       firstname: "Loic",
       lastname:"Berthelot"
@@ -57,8 +56,9 @@ var user = User.add(
       heated:{false}
     },
     initialize:{true}
-
-},function(user)
+};
+var user = User.add(data
+  ,function(user)
 {
     res.status(200).json(user);
 });
