@@ -4,15 +4,15 @@ var Schema = mongoose.Schema;
 
   // define schema
   var UserSchema = new Schema({
-    name:{
+    name:[{
       firstname: {type:String},
       lastname:{type:String}
-    },
-    pool:{
+    }],
+    pool:[{
       size:{type:Number},
       type:{type:String},
       heated:{type:Boolean}
-    },
+    }],
     initialize:{type:Boolean}
   });
   var User = mongoose.model('User', UserSchema);
@@ -21,7 +21,7 @@ var Schema = mongoose.Schema;
 
   	var self = this;
   	this.add = function(data, callback) {
-  		user = new User(data);
+  		user = new User({data});
   	  callback(user);
   	};
   	this._Model = User;
