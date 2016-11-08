@@ -70,7 +70,7 @@ router.get('/test2', function(req, res, next) {
 
   });
 });
-});
+
 
 router.get('/test/:toto', function(req, res, next) {
   //get from url which user we want
