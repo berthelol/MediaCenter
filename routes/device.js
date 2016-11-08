@@ -54,23 +54,18 @@ router.get('/json', function(req, res, next) {
 
 //test
 router.get('/test', function(req, res, next) {
-  var test = new toto({name:"bill",age:45});
-  res.send("new created data :"+ test.name);
+  var test = toto.add("bill",67,function(_test){
+    res.status(200).json(r);
+  })
+
 });
 
 router.get('/test2', function(req, res, next) {
-  toto.create({
-    name: 'bill',
-    age: 25,
-  }, function(err, bill) {
-    if (err) {
-      throw err;
-    }
-    res.send('People added to db: %s', bill.toString());
+  var test = toto.add("bill",67,function(_test){
+    res.send("here is: "+ _test.name);
+  })
 
-  });
 });
-
 
 router.get('/test/:toto', function(req, res, next) {
   //get from url which user we want
