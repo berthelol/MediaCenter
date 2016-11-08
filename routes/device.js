@@ -57,10 +57,11 @@ router.get('/parametres', function(req, res, next) {
     },
     initialize:true
 };
-var user = User.add(data
-  ,function(user)
-{
-    res.status(200).json(user);
+  var user = User.add(data
+    ,function(user)
+  {
+      res.status(200).json(user);
+  });
 });
 
 router.get('/json', function(req, res, next) {
