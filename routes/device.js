@@ -55,7 +55,7 @@ router.get('/json', function(req, res, next) {
 //test
 router.get('/test', function(req, res, next) {
   var test = toto.add("bill",67,function(_test){
-    res.status(200).json(r);
+    res.status(200).json(_test);
   })
 
 });
