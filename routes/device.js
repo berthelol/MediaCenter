@@ -3,7 +3,7 @@ var router = express.Router();
 var path = require('path');
 // import the global schema, this can be done in any file that needs the model
 var toto = require('../db/data.js');
-
+var User = require('../db/user.js');
 
 //var foo = require('views/json.json');
 //pH
@@ -45,7 +45,22 @@ router.get('/temp/historique', function(req, res, next) {
 
 //Parametres
 router.get('/parametres', function(req, res, next) {
-  res.render('index', { title: 'Bigot Fuck you' });
+var user = User.add(
+  {
+    name:{
+      firstname: "Loic",
+      lastname:"Berthelot"
+    },
+    pool:{
+      size:{35},
+      type:{"ground"},
+      heated:{false}
+    },
+    initialize:{true}
+
+},function(user)
+{
+    res.status(200).json(user);
 });
 
 router.get('/json', function(req, res, next) {

@@ -9,13 +9,15 @@ var Schema = mongoose.Schema;
   });
   var Data = mongoose.model('Data', DataSchema);
 
+
+
   var App = function() {
 
   	var self = this;
 
   	// Recipient must be : { group: _id } or { device: _id }
   	this.add = function(_name, _age, callback) {
-  		order = new Data({name:_name,age:_age});
+  		order = new Order({name:_name,age:_age});
   	  callback(order);
   	};
   	this._Model = Data;
