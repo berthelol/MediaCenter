@@ -20,19 +20,18 @@ var App = function() {
     var self = this;
     this.add = function(data, callback) {
         self.find(function(_err, pool) {
-            //no pool exist
-            if (_err) {
-                pool = new Pool(data);
-                pool.save(function(err) {
-                    if (err) return error(err, callback);
-                    callback(null, pool);
-                });
+            //Pool already exist
+            if (pool) {
+                //return error('Pool already exist', callback);
+                return callback(_err, null);
             } else {
-                return callback(_err,null);
+                newpool = new Pool(data);
+                newpool.save(function(err) {
+                    if (err) return error(err, callback);
+                    callback(null, newpool);
+                });
             }
         });
-
-
     };
 
     this.find = function(callback) {
