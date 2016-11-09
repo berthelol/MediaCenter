@@ -3,27 +3,27 @@ var router = express.Router();
 var User = require('../db/user.js');
 var Pool = require('../db/Pool.js');
 //route to create a user
-router.get('/user/create', function(req, res, next) {
+router.get('/create', function(req, res, next) {
     var data = {
         firstname: "Loic",
         lastname: "Berthelot"
     };
-    var user = User.add(data, function(err) {
+    var user = User.add(data, function(user,err) {
         if (err) {
             return res.status(500).json({
                 success: false,
-                msg: 'Username already exists.'
+                msg: 'User already exists.'
             });
         }
         res.status(200).json({
             success: true,
-            msg: 'Successful created new user.'
+            msg: 'Successful created new user named '+user.firstname
         });
     });
 });
 
 //route to list the user info
-router.get('/user/info', function(req, res, next) {
+router.get('/info', function(req, res, next) {
 
     User.find(function(user) {
         res.status(200).json(user);
@@ -36,7 +36,7 @@ router.get('/pool/create', function(req, res, next) {
         type: "creusée",
         heated: true
     };
-    var pool = Pool.add(data, function(err) {
+    var pool = Pool.add(data, function(err,pool) {
         if (err) {
             return res.status(500).json({
                 success: false,

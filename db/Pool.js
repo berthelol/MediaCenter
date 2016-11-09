@@ -18,13 +18,21 @@ var PoolSchema = new Schema({
   var App = function() {
 
   	var self = this;
+    this.add = function(data, callback) {
+        pool = new Pool(data);
+        user.save(function(err) {
+            if(err) return error(err, callback);
+            callback(null, pool);
+        });
+
+    };
   	this.add = function(data, callback) {
-  		pool = new Pool(data);
-  	  callback(pool);
+
+
   	};
     this.find = function(callback)
     {
-      User.findOne({}, function(err, pool) {
+      Pool.findOne({}, function(err, pool) {
           if(err) return error(err, callback);
           if(pool == null) return error('No pool Found', callback);
 
