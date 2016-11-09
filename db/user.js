@@ -44,7 +44,7 @@ var App = function() {
           {
             callback(err,null);
           }else if(user == null){
-            callback(error("No user found"),null)
+            callback("No user found",null)
           }else {
             callback(null, user);
           }
