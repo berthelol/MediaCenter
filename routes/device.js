@@ -10,6 +10,10 @@ router.get('/pH/bacmoins', function(req, res, next) {
   res.render('index', { title: 'Bigot Fuck you' });
 });
 
+router.post('/pH/bacmoins', function(req, res, next) {
+  res.send(req.body.name);
+});
+
 router.get('/pH/bacplus', function(req, res, next) {
   res.render('index', { title: 'Bigot Fuck you' });
 });
