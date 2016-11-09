@@ -5,7 +5,6 @@ var path = require('path');
 var Data = require('../db/data.js');
 
 
-//var foo = require('views/json.json');
 //pH
 router.get('/pH/bacmoins', function(req, res, next) {
   res.render('index', { title: 'Bigot Fuck you' });
@@ -45,26 +44,11 @@ router.get('/temp/historique', function(req, res, next) {
 
 //Parametres
 router.get('/parametres', function(req, res, next) {
-  
+
 });
 
 router.get('/json', function(req, res, next) {
    res.sendFile(path.normalize(__dirname + '/test.json'));
-});
-
-//test
-router.get('/test', function(req, res, next) {
-  var test = Data.add("bill",67,function(_test){
-    res.status(200).json(_test);
-  })
-
-});
-
-router.get('/test2', function(req, res, next) {
-  var test = Data.add("bill",67,function(_test){
-    res.send("here is: "+ _test.name);
-  })
-
 });
 
 router.get('/test/:toto', function(req, res, next) {

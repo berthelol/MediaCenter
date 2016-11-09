@@ -10,34 +10,6 @@ var user = require('./routes/user');
 var device = require('./routes/device');
 
 var app = express();
-//var MongoClient = require('mongodb').MongoClient;
-//var mongoose = require('mongoose');
-//var Schema = mongoose.Schema;
-//mongoose.connect('mongodb://localhost/test');
-//var db = mongoose.connection;
-
-/*
-// Represent a file on the server
-var fileSchema = new mongoose.Schema({
-	name: {type: String, required: true}
-});
-
-var _Schema = mongoose.model('File', fileSchema);
-var test = new _Schema({name:"tata"});
-console.log(test.name);
-*/
-
-
-// Connect to the db
-//remeber to activate it
-/*MongoClient.connect("mongodb://localhost:27017/exampleDb", function(err, db) {
-  if(!err) {
-    console.log("Mongodb is connected");
-  }else if(err)
-  {
-    console.log("Error connecting: "+err);
-  }
-});*/
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));

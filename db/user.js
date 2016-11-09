@@ -6,27 +6,15 @@ var db = mongoose.connection;
 mongoose.connect('localhost', 'poolcleaner');
 // define schema
 var UserSchema = new Schema({
-    name: {
-        firstname: {
-            type: String
-        },
-        lastname: {
-            type: String
-        }
+    firstname: {
+        type: String
     },
-    pool: {
-        size: {
-            type: Number
-        },
-        type: {
-            type: String
-        },
-        heated: {
-            type: Boolean
-        }
+    lastname: {
+        type: String
     },
-    initialize: {
-        type: Boolean
+    photo: {
+        data: Buffer,
+        contentType: String
     }
 });
 var User = mongoose.model('User', UserSchema);
@@ -43,7 +31,7 @@ var App = function() {
         });
 
     };
-    //find (all) user
+    //find user
     this.find = function(callback) {
         User.find({}, function(err, users) {
             var userMap = {};
