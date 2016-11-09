@@ -28,7 +28,7 @@ var App = function() {
                     callback(null, pool);
                 });
             } else {
-                return error('Pool already exist', callback);
+                return callback(_err,null);
             }
         });
 
