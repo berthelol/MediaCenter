@@ -25,7 +25,7 @@ router.get('/create', function(req, res, next) {
 //route to list the user info
 router.get('/info', function(req, res, next) {
 
-    User.find(function(user,err) {
+    User.find(function(err,user) {
       if (err) {
           return res.status(401).json({
               success: false,
