@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-var path = require('path');
+//var path = require('path');
 // import the global schema, this can be done in any file that needs the model
 var Data = require('../db/data.js');
 
@@ -46,11 +46,7 @@ router.get('/temp/historique', function(req, res, next) {
 router.get('/parametres', function(req, res, next) {
 
 });
-
-router.get('/json', function(req, res, next) {
-   res.sendFile(path.normalize(__dirname + '/test.json'));
-});
-
+//test
 router.get('/test/:toto', function(req, res, next) {
   //get from url which user we want
     var condition = {
