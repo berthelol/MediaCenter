@@ -35,8 +35,8 @@ var App = function() {
 
     this.find = function(callback) {
         Pool.findOne({}, function(err, pool) {
-            if (err) return error(err, callback);
-            if (pool == null) return error('No pool Found', callback);
+            if (err) callback(err, null);
+            if (pool == null) callback('No pool found',null);
             callback(null, pool);
         });
     }
