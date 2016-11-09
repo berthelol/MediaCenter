@@ -3,7 +3,7 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 var db = mongoose.connection;
-
+mongoose.connect('localhost', 'poolcleaner');
 // define schema
 var UserSchema = new Schema({
     name: {
@@ -38,10 +38,10 @@ var App = function() {
     this.add = function(data, callback) {
         var user = new User(data);
         user.save(function(err) {
-            if (err) return handleError(err);
-
+            if(err) return error(err, callback);
+            callback(null, user);
         });
-        callback(user);
+
     };
     //find (all) user
     this.find = function(callback) {

@@ -15,9 +15,14 @@ router.get('/create', function(req, res, next) {
         },
         initialize: true
     };
-    var user = User.add(data, function(user) {
-        res.status(200).json(user);
+    var user = User.add(data, function(err) {
+      if (err) {
+        return res.status(500).json({success: false, msg: 'Username already exists.'});
+      }
+      res.status(200).json({success: true, msg: 'Successful created new user.'});
     });
+
+
 });
 
 router.get('/', function(req, res, next) {

@@ -11,12 +11,12 @@ var device = require('./routes/device');
 
 var app = express();
 //var MongoClient = require('mongodb').MongoClient;
-var mongoose = require('mongoose');
-var Schema = mongoose.Schema;
+//var mongoose = require('mongoose');
+//var Schema = mongoose.Schema;
 //mongoose.connect('mongodb://localhost/test');
-var db = mongoose.connection;
+//var db = mongoose.connection;
 
-
+/*
 // Represent a file on the server
 var fileSchema = new mongoose.Schema({
 	name: {type: String, required: true}
@@ -25,6 +25,7 @@ var fileSchema = new mongoose.Schema({
 var _Schema = mongoose.model('File', fileSchema);
 var test = new _Schema({name:"tata"});
 console.log(test.name);
+*/
 
 
 // Connect to the db
