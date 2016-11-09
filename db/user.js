@@ -24,12 +24,18 @@ var App = function() {
     var self = this;
     //create a user
     this.add = function(data, callback) {
-        var user = new User(data);
-        user.save(function(err) {
-            if(err) return error(err, callback);
-            callback(null, user);
-        });
-
+      self.find(function(_err, user) {
+          //User already exist
+          if (user) {
+              callback("User already exist", null);
+          } else {
+              newuser = new User(data);
+              newuser.save(function(err) {
+                  if (err) return error(err, callback);
+                  callback(null, newuser);
+              });
+          }
+      });
     };
     //find user
     this.find = function(callback) {

@@ -21,8 +21,8 @@ var App = function() {
     this.add = function(data, callback) {
         self.find(function(_err, pool) {
             //Pool already exist
-            if (pool) {            
-                return callback("Pool already exist", null);
+            if (pool) {
+                callback("Pool already exist", null);
             } else {
                 newpool = new Pool(data);
                 newpool.save(function(err) {
