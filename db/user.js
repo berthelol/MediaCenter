@@ -33,14 +33,8 @@ var App = function() {
     };
     //find user
     this.find = function(callback) {
-        User.findOne({}, function(err, users) {
-            var userMap = {};
-
-            users.forEach(function(user) {
-                userMap[user._id] = user;
-            });
-
-            callback(userMap);
+        User.findOne({}, function(err, user) {
+            callback(user);
         });
     };
     this._Model = User;
