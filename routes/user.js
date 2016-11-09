@@ -42,11 +42,12 @@ router.get('/pool/create', function(req, res, next) {
                 success: false,
                 msg: 'Pool already exists.'
             });
-        }
-        res.status(200).json({
-            success: true,
-            msg: 'Successful created new pool.'
-        });
+        }else {
+          res.status(200).json({
+              success: true,
+              msg: 'Successful created new pool.'
+          });
+        }      
     });
 });
 //route to list the user info
