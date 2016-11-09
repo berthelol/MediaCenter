@@ -26,10 +26,7 @@ var PoolSchema = new Schema({
         });
 
     };
-  	this.add = function(data, callback) {
-
-
-  	};
+  	
     this.find = function(callback)
     {
       Pool.findOne({}, function(err, pool) {
