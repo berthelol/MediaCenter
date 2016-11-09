@@ -12,7 +12,7 @@ router.get('/create', function(req, res, next) {
         if (err) {
             return res.status(500).json({
                 success: false,
-                msg: err.msg
+                msg: err
             });
         }
         res.status(200).json({
