@@ -30,7 +30,7 @@ var pHSchema = new Schema({
         time_of_mesure: {
             type: Date,
             default: Date.now()
-        }
+        },
         mesure: {
             type: Number,
             min: 0,
