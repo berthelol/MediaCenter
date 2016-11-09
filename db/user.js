@@ -40,7 +40,9 @@ var App = function() {
     //find user
     this.find = function(callback) {
         User.findOne({}, function(err, user) {
-            callback(user);
+          if (err) return error(err, callback);
+          if (user == null) return error('No user Found', callback);
+          callback(null, user);
         });
     };
     this._Model = User;

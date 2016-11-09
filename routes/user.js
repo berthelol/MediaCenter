@@ -25,8 +25,15 @@ router.get('/create', function(req, res, next) {
 //route to list the user info
 router.get('/info', function(req, res, next) {
 
-    User.find(function(user) {
-        res.status(200).json(user);
+    User.find(function(user,err) {
+      if (err) {
+          return res.status(401).json({
+              success: false,
+              msg: err.message
+          });
+      } else {
+            res.status(200).json(user);
+      }
     });
 });
 //route to create a pool
@@ -47,7 +54,7 @@ router.get('/pool/create', function(req, res, next) {
               success: true,
               msg: 'Successful created new pool.'
           });
-        }      
+        }
     });
 });
 //route to list the user info
