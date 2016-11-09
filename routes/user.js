@@ -12,7 +12,7 @@ router.get('/create', function(req, res, next) {
         if (err) {
             return res.status(500).json({
                 success: false,
-                msg: 'User already exists.'
+                msg: err.msg
             });
         }
         res.status(200).json({
