@@ -41,7 +41,7 @@ var App = function() {
     this.find = function(callback) {
         User.findOne({}, function(err, user) {
           if (err) return error(err, callback);
-          if (user == null) return error('No user Found', callback);
+        //  if (user == null) return error('No user Found', callback);
           callback(null, user);
         });
     };
