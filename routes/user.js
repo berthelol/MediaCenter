@@ -22,7 +22,7 @@ router.get('/create', function(req, res, next) {
 
 router.get('/', function(req, res, next) {
 
-    User.find(, function(user) {
+    User.find(function(user) {
         res.status(200).json(user);
     });
 });
