@@ -20,7 +20,7 @@ var PoolSchema = new Schema({
   	var self = this;
     this.add = function(data, callback) {
         pool = new Pool(data);
-        user.save(function(err) {
+        pool.save(function(err) {
             if(err) return error(err, callback);
             callback(null, pool);
         });
