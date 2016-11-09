@@ -48,10 +48,6 @@ var App = function() {
           }else {
             callback(null, user);
           }
-
-          //  return error(err, callback);
-        //  if (user == null) return error('No user Found', callback);
-
         });
     };
     this._Model = User;

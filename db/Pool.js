@@ -19,27 +19,32 @@ var App = function() {
 
     var self = this;
     this.add = function(data, callback) {
-        self.find(function(_err, pool) {
-            //Pool already exist
-            if (pool) {
-                callback("Pool already exist", null);
-            } else {
-                newpool = new Pool(data);
-                newpool.save(function(err) {
-                    if (err) return error(err, callback);
-                    callback(null, newpool);
-                });
-            }
-        });
+      self.find(function(_err, pool) {
+          //Pool already exist
+          if (pool) {
+              callback("Pool already exist", null);
+          } else {
+              newpool = new Pool(data);
+              newpool.save(function(err) {
+                  if (err) return error(err, callback);
+                  callback(null, newpool);
+              });
+          }
+      });
     };
-
+    //find user
     this.find = function(callback) {
         Pool.findOne({}, function(err, pool) {
-            if (err) callback(err, null);
-            if (pool == null) callback('No pool found',null);
+          if (err)
+          {
+            callback(err,null);
+          }else if(pool == null){
+            callback("No pool found",null)
+          }else {
             callback(null, pool);
+          }
         });
-    }
+    };
     this._Model = Pool;
     this._Schema = PoolSchema;
 }
