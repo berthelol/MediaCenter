@@ -36,12 +36,12 @@ var App = function() {
     var self = this;
     //create a user
     this.add = function(data, callback) {
-        user = new User(data);
+        var user = new User(data);
         user.save(function(err) {
-            if(err) return error(err, callback);
-            callback(user);
-        });
+            if (err) return handleError(err);
 
+        });
+        callback(user);
     };
     //find (all) user
     this.find = function(callback) {
