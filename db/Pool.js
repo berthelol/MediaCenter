@@ -19,9 +19,9 @@ var App = function() {
 
     var self = this;
     this.add = function(data, callback) {
-        self.find(function(err, pool) {
+        self.find(function(_err, pool) {
             //no pool exist
-            if (err) {
+            if (_err) {
                 pool = new Pool(data);
                 pool.save(function(err) {
                     if (err) return error(err, callback);
