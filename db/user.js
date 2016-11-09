@@ -43,9 +43,12 @@ var App = function() {
           if (err)
           {
             callback(err,null);
+          }else if(user == null){
+            callback("No user found",null)
           }else {
             callback(null, user);
           }
+
           //  return error(err, callback);
         //  if (user == null) return error('No user Found', callback);
 
