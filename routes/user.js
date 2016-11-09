@@ -29,7 +29,7 @@ router.get('/info', function(req, res, next) {
       if (err) {
           return res.status(401).json({
               success: false,
-              msg: err.message
+              msg: err
           });
       } else {
             res.status(200).json(user);
@@ -63,7 +63,7 @@ router.get('/pool/info', function(req, res, next) {
         if (err) {
             return res.status(401).json({
                 success: false,
-                msg: err.message
+                msg: err
             });
         } else {
             res.status(200).json(pool);
