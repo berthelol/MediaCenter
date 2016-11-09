@@ -35,7 +35,11 @@ var App = function() {
     //create a user
     this.add = function(data, callback) {
         user = new User(data);
-        callback(user);
+        user.save(function(err) {
+            if(err) return error(err, callback);
+            callback(user);
+        });
+
     };
     //find (all) user
     this.find = function(callback) {
