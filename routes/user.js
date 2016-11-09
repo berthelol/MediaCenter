@@ -8,7 +8,7 @@ router.get('/create', function(req, res, next) {
         firstname: "Loic",
         lastname: "Berthelot"
     };
-    var user = User.add(data, function(user,err) {
+    var user = User.add(data, function(err,user) {
         if (err) {
             return res.status(500).json({
                 success: false,
