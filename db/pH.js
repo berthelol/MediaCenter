@@ -63,11 +63,15 @@ var App = function() {
     this.findall = function(callback) {
         pH.find({}, function(err, historique) {
             var pHMap = {};
-
             historique.forEach(function(ph) {
                 pHMap[ph._id] = ph;
             });
-            callback(err.msg,pHMap);
+            if(err)
+            {
+                return callback(err.msg,null);
+            }
+              callback(null,pHMap);
+
         });
     };
     //find the last data
