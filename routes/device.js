@@ -54,7 +54,7 @@ router.post('/pH/data', function(req, res, next) {
         });
     });
 });
-
+//get all mesures
 router.get('/pH/historique', function(req, res, next) {
     pH.findall(function(err,historique) {
       if(err)

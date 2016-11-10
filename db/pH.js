@@ -6,6 +6,7 @@ var Schema = mongoose.Schema;
 var pHSchema = new Schema({
     bac: {
         bacmoins: {
+            //true if bac a été versé avant la mesure
             flag: {
                 type: Boolean
             },
@@ -65,7 +66,7 @@ var App = function() {
     };
     //find the last data
     this.findlast = function(callback) {
-        /*    pH.findOne({}, function(err, ph) {
+        /*pH.findOne({}, function(err, ph) {
                 if (err) {
                     callback(err.msg, null);
                 } else if (ph == null) {

@@ -3,11 +3,11 @@ var router = express.Router();
 var User = require('../db/user.js');
 var Pool = require('../db/Pool.js');
 //route to create a user
-router.get('/create', function(req, res, next) {
-    var data = {
-        firstname: "Loic",
-        lastname: "Berthelot"
-    };
+router.post('/', function(req, res, next) {
+  var data = {
+      firstname: req.body.firstname,
+      lastname: req.body.lastname
+  };
     var user = User.add(data, function(err,user) {
         if (err) {
             return res.status(500).json({
@@ -23,7 +23,7 @@ router.get('/create', function(req, res, next) {
 });
 
 //route to list the user info
-router.get('/info', function(req, res, next) {
+router.get('/', function(req, res, next) {
 
     User.find(function(err,user) {
       if (err) {
@@ -37,11 +37,11 @@ router.get('/info', function(req, res, next) {
     });
 });
 //route to create a pool
-router.get('/pool/create', function(req, res, next) {
+router.post('/pool', function(req, res, next) {
     var data = {
-        size: 25,
-        type: "creusée",
-        heated: true
+        size: req.body.size,
+        type: req.body.type,
+        heated: req.body.heated
     };
     var pool = Pool.add(data, function(err,pool) {
         if (err) {
@@ -58,7 +58,7 @@ router.get('/pool/create', function(req, res, next) {
     });
 });
 //route to list the user info
-router.get('/pool/info', function(req, res, next) {
+router.get('/pool', function(req, res, next) {
     Pool.find(function(err, pool) {
         if (err) {
             return res.status(401).json({
