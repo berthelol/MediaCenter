@@ -23,19 +23,6 @@ router.get('/pH/bacplus', function(req, res, next) {
         title: 'Bigot Fuck you'
     });
 });
-//get last data
-router.get('/pH/data', function(req, res, next) {
-    pH.findlast(function(err,ph) {
-      if(err)
-      {
-        return res.status(500).json({
-            success: false,
-            msg: err
-        });
-      }
-        res.status(200).json(ph);
-    });
-});
 //add a new data
 router.post('/pH/data', function(req, res, next) {
     var data = {
@@ -54,6 +41,20 @@ router.post('/pH/data', function(req, res, next) {
         });
     });
 });
+//get last data
+router.get('/pH/data', function(req, res, next) {
+    pH.findlast(function(err,ph) {
+      if(err)
+      {
+        return res.status(500).json({
+            success: false,
+            msg: err
+        });
+      }
+        res.status(200).json(ph);
+    });
+});
+
 //get all mesures
 router.get('/pH/historique', function(req, res, next) {
     pH.findall(function(err,historique) {
@@ -73,17 +74,49 @@ router.get('/chlore/bac', function(req, res, next) {
         title: 'Bigot Fuck you'
     });
 });
-
-router.get('/chlore/data', function(req, res, next) {
-    res.render('index', {
-        title: 'Bigot Fuck you'
-    });
+//add a new data
+router.post('/chlore/data', function(req, res, next) {
+  var data = {
+      mesure: req.body.mesure
+  };
+  Chlore.add(data, function(err, chlore) {
+      if (err) {
+          return res.status(500).json({
+              success: false,
+              msg: err.msg
+          });
+      }
+      res.status(200).json({
+          success: true,
+          msg: 'Successful added Chlore mesure'
+      });
+  });
 });
-
+//find last data
+router.get('/chlore/data', function(req, res, next) {
+  Chlore.findlast(function(err,chlore) {
+    if(err)
+    {
+      return res.status(500).json({
+          success: false,
+          msg: err
+      });
+    }
+      res.status(200).json(chlore);
+  });
+});
+//get all mesures
 router.get('/chlore/historique', function(req, res, next) {
-    res.render('index', {
-        title: 'Bigot Fuck you'
-    });
+  Chlore.findall(function(err,historique) {
+    if(err)
+    {
+      return res.status(500).json({
+          success: false,
+          msg: err
+      });
+    }
+      res.status(200).json(historique);
+  });
 });
 //Temperature
 router.get('/temp/data', function(req, res, next) {

@@ -65,16 +65,7 @@ var App = function() {
         });
     };
     //find the last data
-    this.findlast = function(callback) {
-        /*pH.findOne({}, function(err, ph) {
-                if (err) {
-                    callback(err.msg, null);
-                } else if (ph == null) {
-                    callback("No ph found", null)
-                } else {
-                    callback(null, ph);
-                }
-            });*/
+    this.findlast = function(callback) {        
         pH.find().sort({time_of_mesure: -1}).limit(1).exec(function(err, ph) {
             if (err) {
                 callback(err.msg, null);
