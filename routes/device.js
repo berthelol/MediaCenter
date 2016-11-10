@@ -25,10 +25,9 @@ router.get('/pH/bacplus', function(req, res, next) {
 });
 //get last data
 router.get('/pH/data', function(req, res, next) {
-    pH.findlast(function(ph)
-  {
-    res.status(200).json(historique);
-  });    
+    pH.findlast(function(ph) {
+        res.status(200).json(ph);
+    });
 });
 //add a new data
 router.post('/pH/data', function(req, res, next) {
