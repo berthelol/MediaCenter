@@ -85,7 +85,7 @@ var App = function() {
               callback(null, ph);
           }
       });*/
-      pH.find({data:{time_of_mesure:{$lt: 16085}}}).sort({day: -1}).limit(1).exec(function(err, ph){
+      pH.find().sort({data:{time_of_mesure: -1}}).limit(1).exec(function(err, ph){
         if (err) {
             callback(err.msg, null);
         } else if (ph == null) {
