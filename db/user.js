@@ -29,7 +29,7 @@ var App = function() {
           if (user) {
               callback("User already exist", null);
           } else {
-              newuser = new User(data);
+              newuser = new User({firstname:data.firstname,lastname:data.firstname});
               newuser.save(function(err) {
                   if (err) return error(err, callback);
                   callback(null, newuser);
