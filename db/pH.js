@@ -76,7 +76,7 @@ var App = function() {
     };
     //find the last data
     this.findlast = function(callback) {
-      pH.findOne({}, function(err, ph) {
+  /*    pH.findOne({}, function(err, ph) {
           if (err) {
               callback(err.msg, null);
           } else if (ph == null) {
@@ -84,7 +84,17 @@ var App = function() {
           } else {
               callback(null, ph);
           }
+      });*/
+      pH.find({data:{time_of_mesure:{$lt: 16085}}}).sort({day: -1}).limit(1).exec((err, ph) => {
+        if (err) {
+            callback(err.msg, null);
+        } else if (ph == null) {
+            callback("No ph found", null)
+        } else {
+            callback(null, ph);
+        }
       });
+
     }
     this._Model = pH;
     this._Schema = pHSchema;
