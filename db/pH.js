@@ -64,8 +64,8 @@ var App = function() {
         pH.find({}, function(err, historique) {
             var pHMap = {};
 
-            pHMap.forEach(function(ph) {
-                pHMap[user._id] = ph;
+            historique.forEach(function(ph) {
+                pHMap[ph._id] = ph;
             });
             callback(err.msg,pHMap);
         });
