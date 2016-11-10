@@ -29,7 +29,7 @@ router.get('/pH/bacplus', function(req, res, next) {
 //add a new data
 router.post('/pH/data', function(req, res, next) {
     var data = {
-        mesure: req.body.mesure
+        mesure: req.body.mesure,
     };
     pH.add(data, function(err, ph) {
         if (err) {
@@ -83,7 +83,12 @@ router.get('/chlore/bac', function(req, res, next) {
 //add a new data
 router.post('/chlore/data', function(req, res, next) {
   var data = {
-      mesure: req.body.mesure
+      mesure: req.body.mesure,
+      bac:
+      {
+        flag:req.body.bac.flag,
+        remplissage:req.body.remplissage
+      }
   };
   Chlore.add(data, function(err, chlore) {
       if (err) {
