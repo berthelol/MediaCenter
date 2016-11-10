@@ -3,6 +3,7 @@ var router = express.Router();
 //var path = require('path');
 // import the global schema, this can be done in any file that needs the model
 var pH = require('../db/pH.js');
+var Chlore = require('../db/Chlore.js');
 
 
 //pH
