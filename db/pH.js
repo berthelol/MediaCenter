@@ -27,8 +27,7 @@ var pHSchema = new Schema({
         },
     },
     time_of_mesure: {
-        type: Date,
-        default: Date.now()
+        type: Date
     },
     mesure: {
         type: Number,
@@ -37,15 +36,12 @@ var pHSchema = new Schema({
     }
 });
 var pH = mongoose.model('pH', pHSchema);
-
-
-
 var App = function() {
 
     var self = this;
     //add a data
     this.add = function(datafrompost, callback) {
-        ph = new pH({mesure: datafrompost.mesure});
+        ph = new pH({mesure: datafrompost.mesure,time_of_mesure:Date.now()});
         ph.save(function(err) {
             if (err) {
                 return callback(err.msg, null);
@@ -86,7 +82,7 @@ var App = function() {
             } else {
                 callback(null, ph);
             }
-        });       
+        });
     }
     this._Model = pH;
     this._Schema = pHSchema;
