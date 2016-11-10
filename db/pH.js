@@ -50,11 +50,11 @@ var App = function() {
         ph = new pH({
             data :{
                 mesure : datafrompost.mesure
-            }            
+            }
         });
         ph.save(function(err) {
             if (err) {
-                return callback(err, null);
+                return callback(err.msg, null);
             }
             callback(null, ph);
         });
@@ -67,14 +67,14 @@ var App = function() {
             pHMap.forEach(function(ph) {
                 pHMap[user._id] = ph;
             });
-            callback(pHMap);
+            callback(err.msg,pHMap);
         });
     };
     //find the last data
     this.findlast = function(callback) {
-      pH.findOne({}, function(err, ph) {
+      pH.find({}, function(err, ph) {
           if (err) {
-              callback(err, null);
+              callback(err.msg, null);
           } else if (ph == null) {
               callback("No ph found", null)
           } else {

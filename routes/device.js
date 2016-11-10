@@ -25,7 +25,14 @@ router.get('/pH/bacplus', function(req, res, next) {
 });
 //get last data
 router.get('/pH/data', function(req, res, next) {
-    pH.findlast(function(ph) {
+    pH.findlast(function(err,ph) {
+      if(err)
+      {
+        return res.status(500).json({
+            success: false,
+            msg: err
+        });
+      }
         res.status(200).json(ph);
     });
 });
@@ -49,7 +56,14 @@ router.post('/pH/data', function(req, res, next) {
 });
 
 router.get('/pH/historique', function(req, res, next) {
-    pH.findall(function(historique) {
+    pH.findall(function(err,historique) {
+      if(err)
+      {
+        return res.status(500).json({
+            success: false,
+            msg: err
+        });
+      }
         res.status(200).json(historique);
     });
 });
