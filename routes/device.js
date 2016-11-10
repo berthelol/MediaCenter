@@ -4,9 +4,11 @@ var router = express.Router();
 // import the global schema, this can be done in any file that needs the model
 var pH = require('../db/pH.js');
 var Chlore = require('../db/Chlore.js');
+var Temp = require('../db/Temperature.js');
 
-
-//pH
+/******************************************************************************
+***********************************pH******************************************
+*******************************************************************************/
 router.get('/pH/bacmoins', function(req, res, next) {
     res.render('index', {
         title: 'Bigot Fuck you'
@@ -69,7 +71,10 @@ router.get('/pH/historique', function(req, res, next) {
         res.status(200).json(historique);
     });
 });
-//Chlore
+/*******************************************************************************
+************************************Chlore**************************************
+*******************************************************************************/
+//return etat des bacs
 router.get('/chlore/bac', function(req, res, next) {
     res.render('index', {
         title: 'Bigot Fuck you'
@@ -119,22 +124,52 @@ router.get('/chlore/historique', function(req, res, next) {
       res.status(200).json(historique);
   });
 });
-//Temperature
+/*******************************************************************************
+*********************************Temperature************************************
+*******************************************************************************/
+//add a mesure
+router.post('/temp/data', function(req, res, next) {
+  var data = {
+      mesure: req.body.mesure
+  };
+  Temp.add(data, function(err, temp) {
+      if (err) {
+          return res.status(500).json({
+              success: false,
+              msg: err.msg
+          });
+      }
+      res.status(200).json({
+          success: true,
+          msg: 'Successful added Temperature mesure'
+      });
+  });
+});
+//get the last mesure
 router.get('/temp/data', function(req, res, next) {
-    res.render('index', {
-        title: 'Bigot Fuck you'
-    });
+  Temp.findlast(function(err,temp) {
+    if(err)
+    {
+      return res.status(500).json({
+          success: false,
+          msg: err
+      });
+    }
+      res.status(200).json(temp);
+  });
 });
 
 router.get('/temp/historique', function(req, res, next) {
-    res.render('index', {
-        title: 'Bigot Fuck you'
-    });
-});
-
-//Parametres
-router.get('/parametres', function(req, res, next) {
-
+  Temp.findall(function(err,historique) {
+    if(err)
+    {
+      return res.status(500).json({
+          success: false,
+          msg: err
+      });
+    }
+      res.status(200).json(historique);
+  });
 });
 //test
 router.get('/test/:toto', function(req, res, next) {
