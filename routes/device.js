@@ -82,6 +82,8 @@ router.get('/chlore/bac', function(req, res, next) {
 });
 //add a new data
 router.post('/chlore/data', function(req, res, next) {
+  console.log(req.body);
+  return;
   var data = {
       mesure: req.body.mesure,
       bac:
@@ -90,8 +92,7 @@ router.post('/chlore/data', function(req, res, next) {
         remplissage:req.body.bac.remplissage
       }
   };
-  console.log(req.body);
-  return ;
+
   Chlore.add(data, function(err, chlore) {
       if (err) {
           return res.status(500).json({
