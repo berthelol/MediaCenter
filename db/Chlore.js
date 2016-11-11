@@ -28,9 +28,7 @@ var App = function() {
     var self = this;
     //add a data
     this.add = function(datafrompost, callback) {
-        chlore = new Chlore({
-            bac:datafrompost.bac,
-            mesure:datafrompost.mesure,
+        chlore = new Chlore(datafrompost,{            
             time_of_mesure: Date.now(),
         });
         chlore.save(function(err) {
