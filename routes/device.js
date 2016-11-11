@@ -82,8 +82,8 @@ router.get('/chlore/bac', function(req, res, next) {
 });
 //add a new data
 router.post('/chlore/data', function(req, res, next) {
-  console.log(req.body);
-  
+  console.log(req.body.mesure);
+
   var data = {
       mesure: req.body.mesure,
       bac:
