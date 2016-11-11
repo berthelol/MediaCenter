@@ -83,7 +83,7 @@ router.get('/chlore/bac', function(req, res, next) {
 //add a new data
 router.post('/chlore/data', function(req, res, next) {
   console.log(JSON.stringify(req.body));
-  return res.send("tto");
+
   var data = {
       mesure: req.body.mesure,
       bac:
