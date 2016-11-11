@@ -27,8 +27,13 @@ var App = function() {
 
     var self = this;
     //add a data
-    this.add = function(datafrompost, callback) {
-        chlore = new Chlore(datafrompost,{            
+    this.add = function(data, callback) {
+        chlore = new Chlore({
+            bac:{
+              remplissage:data.bac.remplissage,
+              flag:data.bac.flag
+            },
+            mesure:data.mesure,
             time_of_mesure: Date.now(),
         });
         chlore.save(function(err) {
