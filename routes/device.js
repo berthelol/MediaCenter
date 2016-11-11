@@ -91,6 +91,7 @@ router.post('/chlore/data', function(req, res, next) {
       }
   };
   console.log(req.body);
+  return ;
   Chlore.add(data, function(err, chlore) {
       if (err) {
           return res.status(500).json({
