@@ -87,9 +87,10 @@ router.post('/chlore/data', function(req, res, next) {
       bac:
       {
         flag:req.body.bac.flag,
-        remplissage:req.body.remplissage
+        remplissage:req.body.bac.remplissage
       }
   };
+  console.log(req.body);
   Chlore.add(data, function(err, chlore) {
       if (err) {
           return res.status(500).json({
