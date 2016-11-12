@@ -38,9 +38,10 @@ var App = function() {
         });
         chlore.save(function(err) {
             if (err) {
-                return callback(err.msg, null);
+                callback(err, null);
+            }else {
+                callback(null, chlore);
             }
-            callback(null, chlore);
         });
     };
     //find all historique
