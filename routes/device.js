@@ -32,12 +32,12 @@ router.post('/pH', function(req, res, next) {
     var data = {
         mesure: req.body.mesure,
     };
-    
+
     pH.add(data, function(err, ph) {
         if (err) {
             return res.status(500).json({
                 success: false,
-                msg: err.msg
+                msg: err
             });
         }
         res.status(200).json({
