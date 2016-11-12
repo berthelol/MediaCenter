@@ -31,9 +31,11 @@ var App = function() {
         });
         order.save(function(err) {
             if (err) {
-                return callback(err.msg, null);
+                callback(err.msg, null);
+            }else {
+                callback(null, order);
             }
-            callback(null, order);
+
         });
     };
     //find all historique
