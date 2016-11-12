@@ -31,9 +31,7 @@ var pHSchema = new Schema({
         type: Date
     },
     mesure: {
-        type: Number,
-        min: 0,
-        max: 14
+        type: Number
     }
 });
 pHSchema.path('mesure').validate(function (v) {
