@@ -36,6 +36,10 @@ var pHSchema = new Schema({
         max: 14
     }
 });
+pHSchema.path('mesure').validate(function (v) {
+  return ((v>=0)&&(v=<14));
+}, 'Error pH not between 0 and 14');
+
 var pH = mongoose.model('pH', pHSchema);
 var App = function() {
 
@@ -65,7 +69,7 @@ var App = function() {
         });
     };
     //find the last data
-    this.findlast = function(callback) {        
+    this.findlast = function(callback) {
         pH.find().sort({time_of_mesure: -1}).limit(1).exec(function(err, ph) {
             if (err) {
                 callback(err.msg, null);
