@@ -30,8 +30,7 @@ var App = function() {
             time_of_order: Date.now(),
         });
         var error = order.validateSync();
-        assert.equal(error.errors['which_bac'].message,
-        data.bac.which_bac+' is not a valid enum value for which_bac');
+        console.log(error);
         order.save(function(err) {
             if (err) {
                 callback(err.msg, null);
