@@ -19,7 +19,7 @@ router.post('/', function(req, res, next) {
         }
         res.status(200).json({
             success: true,
-            msg: 'Successful added new order named ' + order.ordername
+            msg: 'Successful added new order named '
         });
     });
 });
