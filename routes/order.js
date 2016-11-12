@@ -6,7 +6,11 @@ var OrderSchema =require('mongoose').model('Order').schema;
 router.post('/', function(req, res, next) {
   if(OrderSchema.path('bac.which_bac').enumValues.indexOf(req.body.bac.which_bac) == -1)
   {
-    console.log("no enum corresponded");
+    //not the right enum
+    return res.status(500).json({
+        success: false,
+        msg: "No bac knowed: "+req.body.bac.which_bac
+    });
   }
     var data = {
         ordername: req.body.ordername,

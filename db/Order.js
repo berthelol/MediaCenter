@@ -32,8 +32,7 @@ var App = function() {
                 mesure: data.bac.mesure
             },
             time_of_order: Date.now(),
-        });
-        console.log(order.schema.path('bac.which_bac').enumValues);
+        });      
         order.save(function(err) {
             if (err) {
                 callback(err.msg, null);
