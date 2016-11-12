@@ -29,16 +29,21 @@ var App = function() {
             },
             time_of_order: Date.now(),
         });
-        var error = order.validateSync();
-        console.log(error);
-        order.save(function(err) {
-            if (err) {
-                callback(err.msg, null);
-            }else {
-                callback(null, order);
-            }
+        var error =null;
+        error= order.validateSync();
+        if(error['bac.which_bac']){
+          callback(error['bac.which_bac'].message, null);
+        }else {
+          order.save(function(err) {
+              if (err) {
+                  callback(err.msg, null);
+              }else {
+                  callback(null, order);
+              }
 
-        });
+          });
+        }
+
     };
     //find all historique
     this.findall = function(callback) {
