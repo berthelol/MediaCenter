@@ -16,12 +16,6 @@ router.get('/pH/bacmoins', function(req, res, next) {
     });
 });
 
-router.post('/pH/bacmoins', function(req, res, next) {
-    res.render('index', {
-        title: 'Bigot Fuck you'
-    });
-});
-
 router.get('/pH/bacplus', function(req, res, next) {
     res.render('index', {
         title: 'Bigot Fuck you'
