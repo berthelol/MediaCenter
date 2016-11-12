@@ -4,16 +4,20 @@ var Schema = mongoose.Schema;
 
 // define schema
 var OrderSchema = new Schema({
-  ordername:{type:String,required: [true, 'Why no ordername?']},
-  bac:
-  {
-    which_bac: {
+    ordername: {
         type: String,
-        enum: ['Chlore', 'pHmoins','pHplus']
+        required: [true, 'Why no ordername?']
     },
-    mesure:{type:Number},
-  },
-  time_of_order:Date
+    bac: {
+        which_bac: {
+            type: String,
+            enum: ['Chlore', 'pHmoins', 'pHplus']
+        },
+        mesure: {
+            type: Number
+        },
+    },
+    time_of_order: Date
 });
 var Order = mongoose.model('Order', OrderSchema);
 var App = function() {
@@ -23,27 +27,21 @@ var App = function() {
     this.add = function(data, callback) {
         order = new Order({
             ordername: data.ordername,
-            bac:{
+            bac: {
                 which_bac: data.bac.which_bac,
                 mesure: data.bac.mesure
             },
             time_of_order: Date.now(),
         });
-        var error =null;
-        error= order.validateSync();
-        if(error['bac.which_bac']){
-          callback(error['bac.which_bac'].message, null);
-        }else {
-          order.save(function(err) {
-              if (err) {
-                  callback(err.msg, null);
-              }else {
-                  callback(null, order);
-              }
+        console.log(order.schema.path('bac.which_bac').enumValues);
+        order.save(function(err) {
+            if (err) {
+                callback(err.msg, null);
+            } else {
+                callback(null, order);
+            }
 
-          });
-        }
-
+        });
     };
     //find all historique
     this.findall = function(callback) {
