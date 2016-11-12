@@ -14,12 +14,12 @@ router.post('/', function(req, res, next) {
         if (err) {
             return res.status(500).json({
                 success: false,
-                msg: err.msg
+                msg: "Error:"+err.msg
             });
         }
         res.status(200).json({
             success: true,
-            msg: 'Successful added new order named' + order.ordername
+            msg: 'Successful added new order named ' + order.ordername
         });
     });
 });
