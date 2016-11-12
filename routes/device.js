@@ -27,7 +27,7 @@ router.get('/pH/bacplus', function(req, res, next) {
     });
 });
 //add a new pH mesure
-router.post('/pH/data', function(req, res, next) {
+router.post('/pH', function(req, res, next) {
     var data = {
         mesure: req.body.mesure,
     };
@@ -45,7 +45,7 @@ router.post('/pH/data', function(req, res, next) {
     });
 });
 //get last pH mesure
-router.get('/pH/data', function(req, res, next) {
+router.get('/pH', function(req, res, next) {
     pH.findlast(function(err,ph) {
       if(err)
       {
@@ -81,7 +81,7 @@ router.get('/chlore/bac', function(req, res, next) {
     });
 });
 //add a new chlore mesure
-router.post('/chlore/data', function(req, res, next) {
+router.post('/chlore', function(req, res, next) {
   var data = {
       mesure: req.body.mesure,
       bac:
@@ -105,7 +105,7 @@ router.post('/chlore/data', function(req, res, next) {
   });
 });
 //find last chlore mesure
-router.get('/chlore/data', function(req, res, next) {
+router.get('/chlore', function(req, res, next) {
   Chlore.findlast(function(err,chlore) {
     if(err)
     {
