@@ -35,8 +35,8 @@ var pHSchema = new Schema({
     }
 });
 pHSchema.path('mesure').validate(function (v) {
-  console.log(typeof v);
-  if((v>=0)&&(v<=14))
+  console.log(v);
+  if(v>=0)
   {
     return true;
   } else {
@@ -55,8 +55,9 @@ var App = function() {
         ph.save(function(err) {
             if (err) {
                 return callback(err.msg, null);
+            }else {
+                callback(null, ph);
             }
-            callback(null, ph);
         });
     };
     //find all historique
