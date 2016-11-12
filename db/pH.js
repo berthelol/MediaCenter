@@ -45,8 +45,8 @@ var App = function() {
 
     var self = this;
     //add a data
-    this.add = function(datafrompost, callback) {
-        ph = new pH({mesure: datafrompost.mesure,time_of_mesure:Date.now()});
+    this.add = function(data, callback) {
+        ph = new pH({mesure: data.mesure,bac:data.bac,time_of_mesure:Date.now()});
         ph.save(function(err) {
             if (err) {
                 callback(err, null);

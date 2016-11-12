@@ -31,6 +31,7 @@ router.get('/pH/bacplus', function(req, res, next) {
 router.post('/pH', function(req, res, next) {
     var data = {
         mesure: req.body.mesure,
+        bac:req.body.bac
     };
 
     pH.add(data, function(err, ph) {
@@ -86,7 +87,7 @@ router.get('/chlore/bac', function(req, res, next) {
 router.post('/chlore', function(req, res, next) {
   var data = {
       mesure: req.body.mesure,
-      bac: req.body.bac      
+      bac: req.body.bac
   };
 
   Chlore.add(data, function(err, chlore) {
