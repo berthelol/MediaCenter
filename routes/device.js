@@ -26,7 +26,7 @@ router.get('/pH/bacplus', function(req, res, next) {
         title: 'Bigot Fuck you'
     });
 });
-//add a new data
+//add a new pH mesure
 router.post('/pH/data', function(req, res, next) {
     var data = {
         mesure: req.body.mesure,
@@ -44,7 +44,7 @@ router.post('/pH/data', function(req, res, next) {
         });
     });
 });
-//get last data
+//get last pH mesure
 router.get('/pH/data', function(req, res, next) {
     pH.findlast(function(err,ph) {
       if(err)
@@ -58,7 +58,7 @@ router.get('/pH/data', function(req, res, next) {
     });
 });
 
-//get all mesures
+//get all phH mesures
 router.get('/pH/historique', function(req, res, next) {
     pH.findall(function(err,historique) {
       if(err)
@@ -80,10 +80,8 @@ router.get('/chlore/bac', function(req, res, next) {
         title: 'Bigot Fuck you'
     });
 });
-//add a new data
+//add a new chlore mesure
 router.post('/chlore/data', function(req, res, next) {
-  console.log(JSON.stringify(req.body));
-
   var data = {
       mesure: req.body.mesure,
       bac:
@@ -106,7 +104,7 @@ router.post('/chlore/data', function(req, res, next) {
       });
   });
 });
-//find last data
+//find last chlore mesure
 router.get('/chlore/data', function(req, res, next) {
   Chlore.findlast(function(err,chlore) {
     if(err)
@@ -119,7 +117,7 @@ router.get('/chlore/data', function(req, res, next) {
       res.status(200).json(chlore);
   });
 });
-//get all mesures
+//get all chlore mesures
 router.get('/chlore/historique', function(req, res, next) {
   Chlore.findall(function(err,historique) {
     if(err)
@@ -135,7 +133,7 @@ router.get('/chlore/historique', function(req, res, next) {
 /*******************************************************************************
 *********************************Temperature************************************
 *******************************************************************************/
-//add a mesure
+//add a temperature mesure
 router.post('/temp/data', function(req, res, next) {
   var data = {
       mesure: req.body.mesure
@@ -153,7 +151,7 @@ router.post('/temp/data', function(req, res, next) {
       });
   });
 });
-//get the last mesure
+//get the last temperature mesure
 router.get('/temp/data', function(req, res, next) {
   Temp.findlast(function(err,temp) {
     if(err)
@@ -166,7 +164,7 @@ router.get('/temp/data', function(req, res, next) {
       res.status(200).json(temp);
   });
 });
-
+//get all the temperature mesures
 router.get('/temp/historique', function(req, res, next) {
   Temp.findall(function(err,historique) {
     if(err)
@@ -179,6 +177,7 @@ router.get('/temp/historique', function(req, res, next) {
       res.status(200).json(historique);
   });
 });
+
 //test
 router.get('/test/:toto', function(req, res, next) {
     //get from url which user we want
