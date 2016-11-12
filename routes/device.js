@@ -88,8 +88,8 @@ router.post('/chlore', function(req, res, next) {
       mesure: req.body.mesure,
       bac:
       {
-        flag:req.body.bac.flag,
-        remplissage:req.body.bac.remplissage
+        flag:req.body.bac.flag?req.body.bac.flag:"No data",
+        remplissage:req.body.bac.remplissage?req.body.bac.remplissage:"No data"
       }
   };
 
