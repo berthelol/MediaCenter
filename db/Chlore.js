@@ -29,10 +29,7 @@ var App = function() {
     //add a data
     this.add = function(data, callback) {
         chlore = new Chlore({
-            bac:{
-              remplissage:data.bac.remplissage,
-              flag:data.bac.flag
-            },
+            bac:data.bac,
             mesure:data.mesure,
             time_of_mesure: Date.now(),
         });
