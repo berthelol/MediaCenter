@@ -5,7 +5,10 @@ var Order = require('../db/Order.js');
 router.post('/', function(req, res, next) {
     var data = {
         ordername: req.body.ordername,
-        bac:req.body.bac
+        bac:{
+          which_bac:req.body.bac.which_bac,
+          mesure:req.body.bac.mesure
+        }
     };
     Order.add(data, function(err, order) {
         if (err) {
