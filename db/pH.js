@@ -31,11 +31,12 @@ var pHSchema = new Schema({
         type: Date
     },
     mesure: {
-        type: Number
+        type: Number,
+        min:0,
+        max:14
     }
 });
 pHSchema.path('mesure').validate(function (v) {
-
  return (v>=0&&v<=14);
 }, 'Error pH not between 0 and 14');
 
