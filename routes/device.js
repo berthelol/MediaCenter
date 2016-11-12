@@ -3,6 +3,7 @@ var router = express.Router();
 //var path = require('path');
 // import the global schema, this can be done in any file that needs the model
 var pH = require('../db/pH.js');
+var pHSchema =require('mongoose').model('pH').schema;
 var Chlore = require('../db/Chlore.js');
 var Temp = require('../db/Temperature.js');
 
@@ -31,6 +32,7 @@ router.post('/pH', function(req, res, next) {
     var data = {
         mesure: req.body.mesure,
     };
+    
     pH.add(data, function(err, ph) {
         if (err) {
             return res.status(500).json({

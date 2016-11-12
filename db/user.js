@@ -17,6 +17,11 @@ var UserSchema = new Schema({
         contentType: String
     }
 });
+
+UserSchema.path('firstname').validate(function (v) {
+  return v.length > 5;
+}, 'Error first name is under 5');
+
 var User = mongoose.model('User', UserSchema);
 
 var App = function() {
