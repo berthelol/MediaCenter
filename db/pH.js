@@ -35,7 +35,7 @@ var pHSchema = new Schema({
     }
 });
 pHSchema.path('mesure').validate(function (v) {
-  console.log(v);
+  console.log(typeof v);
   if((v>=0)&&(v<=14))
   {
     return true;
