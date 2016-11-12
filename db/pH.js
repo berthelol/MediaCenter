@@ -36,7 +36,7 @@ var pHSchema = new Schema({
 });
 pHSchema.path('mesure').validate(function (v) {
 
- return v>=0;
+ return (v>=0&&v<=14);
 }, 'Error pH not between 0 and 14');
 
 var pH = mongoose.model('pH', pHSchema);
