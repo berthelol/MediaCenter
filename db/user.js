@@ -36,8 +36,11 @@ var App = function() {
           } else {
               newuser = new User(data);
               newuser.save(function(err) {
-                  if (err) return error(err, callback);
-                  callback(null, newuser);
+                  if (err){
+                    callback(err, null);
+                  }else {
+                      callback(null, newuser);
+                  }                 
               });
           }
       });
