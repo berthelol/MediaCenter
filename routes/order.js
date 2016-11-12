@@ -4,7 +4,7 @@ var Order = require('../db/Order.js');
 var OrderSchema =require('mongoose').model('Order').schema;
 //add a new order
 router.post('/', function(req, res, next) {
-  if(OrderSchema.path('bac.which_bac').enumValues.indexOf(req.body.bac.which_bac) > -1)
+  if(OrderSchema.path('bac.which_bac').enumValues.indexOf(req.body.bac.which_bac) == -1)
   {
     console.log("no enum corresponded");
   }
