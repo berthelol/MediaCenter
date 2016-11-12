@@ -86,11 +86,7 @@ router.get('/chlore/bac', function(req, res, next) {
 router.post('/chlore', function(req, res, next) {
   var data = {
       mesure: req.body.mesure,
-      bac:
-      {
-        flag:req.body.bac.flag?req.body.bac.flag:"No data",
-        remplissage:req.body.bac.remplissage?req.body.bac.remplissage:"No data"
-      }
+      bac: req.body.bac      
   };
 
   Chlore.add(data, function(err, chlore) {
