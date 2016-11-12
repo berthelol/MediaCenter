@@ -3,7 +3,7 @@ var router = express.Router();
 var Order = require('../db/Order.js');
 //add a new order
 router.post('/', function(req, res, next) {
-  if(Order.schema.path('bac.which_bac').enumValues.indexOf(req.body.bac.which_bac) > -1)
+  if(Order.model("Order").schema.path('bac.which_bac').enumValues.indexOf(req.body.bac.which_bac) > -1)
   {
     console.log("no enum corresponded");
   }
