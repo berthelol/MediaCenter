@@ -65,7 +65,7 @@ var App = function() {
             if (err) {
                 return callback(err.msg, null);
             }
-            callback(null, pHMap);
+            callback(null, historique);
 
         });
     };
