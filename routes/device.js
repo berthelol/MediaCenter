@@ -127,7 +127,7 @@ router.get('/chlore/historique', function(req, res, next) {
 *********************************Temperature************************************
 *******************************************************************************/
 //add a temperature mesure
-router.post('/temp/data', function(req, res, next) {
+router.post('/Temperature', function(req, res, next) {
   var data = {
       mesure: req.body.mesure
   };
@@ -145,7 +145,7 @@ router.post('/temp/data', function(req, res, next) {
   });
 });
 //get the last temperature mesure
-router.get('/temp/data', function(req, res, next) {
+router.get('/Temperature', function(req, res, next) {
   Temp.findlast(function(err,temp) {
     if(err)
     {
@@ -158,7 +158,7 @@ router.get('/temp/data', function(req, res, next) {
   });
 });
 //get all the temperature mesures
-router.get('/temp/historique', function(req, res, next) {
+router.get('/Temperature/historique', function(req, res, next) {
   Temp.findall(function(err,historique) {
     if(err)
     {
