@@ -51,34 +51,9 @@ function initMap() {
         //Associate the styled map with the MapTypeId and set it to display.
         map.mapTypes.set('map_style', styledMap);
         map.setMapTypeId('map_style'); // Try HTML5 geolocation.
-        if (navigator.geolocation) {
-            navigator.geolocation.getCurrentPosition(function(position) {
-                var pos = {
-                    lat: position.coords.latitude,
-                    lng: position.coords.longitude
-                };
-                var myMarker = new google.maps.Marker({
-                    position: pos,
-                    map: map
-                });
-                map.setCenter(pos);
-            }, function() {
-                handleLocationError(true, infoWindow, map.getCenter());
-            });
-        } else {
-            // Browser doesn't support Geolocation
-            handleLocationError(false, infoWindow, map.getCenter());
-        }
+
     });
 }
-
-function handleLocationError(browserHasGeolocation, infoWindow, pos) {
-    infoWindow.setPosition(pos);
-    infoWindow.setContent(browserHasGeolocation ?
-        'Error: The Geolocation service failed.' :
-        'Error: Your browser doesn\'t support geolocation.');
-}
-
 function onstationselected(station) {
     $.get('https://api.jcdecaux.com/vls/v1/stations/' + station + '?contract=Paris&apiKey=' + velibapikey, function(data, status, xhr) {
         var contentString = "Velib restants: " + data.available_bikes + "<br>Places dispo: " + data.available_bike_stands;
