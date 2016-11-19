@@ -1,8 +1,65 @@
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
 body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+    font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
 a {
-  color: #00B7FF;
+    color: #00B7FF;
+}
+
+#map {
+    margin-right: 50px;
+    height: 100%;
+    width: 80%;
+}
+
+.ui-widget {
+
+    margin-right: 10px;
+}
+
+input, label {
+    display: block;
+}
+
+input {
+    width: 220px;
+    margin-right: 30px;
+}
+.inputzone{
+  display: inline;
+}
+#reset
+{
+  float:right;
+}
+label {
+    text-align: center;
+}
+
+.ui-autocomplete {
+    max-height: 600px;
+    overflow-y: auto;
+    /* prevent horizontal scrollbar */
+    overflow-x: hidden;
+}
+
+.ui-id-1 {
+    max-width: 126px;
+}
+#outputzone
+{
+
+  width: 150px;
+  margin-top: 100px;
+}
+.margin-right
+{
+  display: block;
+  float: right;
 }
