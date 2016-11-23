@@ -27,23 +27,13 @@ var App = function() {
 
     var self = this;
     var today = new Date();
-  var dd = today.getDate();
-  var mm = today.getMonth()+1; //January is 0!
 
-  var yyyy = today.getFullYear();
-  if(dd<10){
-      dd='0'+dd
-  }
-  if(mm<10){
-      mm='0'+mm
-  }
-  var today = dd+'/'+mm+'/'+yyyy;
     //add a data
     this.add = function(data, callback) {
         chlore = new Chlore({
             bac:data.bac,
             mesure:data.mesure,
-            time_of_mesure: today,
+            time_of_mesure: today.toUTCString(),
         });
         chlore.save(function(err) {
             if (err) {
