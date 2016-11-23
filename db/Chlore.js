@@ -33,7 +33,7 @@ var App = function() {
         chlore = new Chlore({
             bac:data.bac,
             mesure:data.mesure,
-            time_of_mesure: today.toUTCString(),
+            time_of_mesure: today.toLocaleDateString() +today.toLocaleTimeString(),
         });
         chlore.save(function(err) {
             if (err) {
