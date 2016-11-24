@@ -74,7 +74,7 @@ var App = function() {
         Order.find({
             _id: id_to_remove
         }).remove(function(err,count) {
-          console.log(count);
+          console.log(count.result.n);
           if(err)
           {
             callback(err.msg);
