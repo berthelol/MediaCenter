@@ -73,13 +73,15 @@ var App = function() {
     this.delete = function(id_to_remove, callback) {
         Order.find({
             _id: id_to_remove
-        }).remove(function(err) {
+        }).remove(function(err,count) {
           if(err)
           {
             callback(err.msg);
-          }else {
+          }else if(count==0) {
+            callback("No order found with id: "+id_to_remove);
+          }else{
             callback(null);
-          }              
+          }
         });
     };
     this._Model = Order;
