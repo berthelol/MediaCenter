@@ -73,8 +73,13 @@ var App = function() {
     this.delete = function(id_to_remove, callback) {
         Order.find({
             _id: id_to_remove
-        }).remove(function(err) {          
-              callback(err.msg);
+        }).remove(function(err) {
+          if(err)
+          {
+            callback(err.msg);
+          }else {
+            callback(null);
+          }              
         });
     };
     this._Model = Order;
