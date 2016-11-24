@@ -49,7 +49,7 @@ var Schema = mongoose.Schema;
             } else if (temp == null) {
                 callback("No temp found", null)
             } else {
-                callback(null, temp);
+                callback(null, temp[0]);
             }
         });
     }
