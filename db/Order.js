@@ -32,7 +32,7 @@ var App = function() {
                 mesure: data.bac.mesure
             },
             time_of_order: Date.now(),
-        });      
+        });
         order.save(function(err) {
             if (err) {
                 callback(err.msg, null);
@@ -68,7 +68,15 @@ var App = function() {
                 callback(null, order);
             }
         });
-    }
+    };
+    //delete the order by id
+    this.delete = function(id_to_remove, callback) {
+        Order.find({
+            _id: id_to_remove
+        }).remove(function(err) {          
+              callback(err.msg);
+        });
+    };
     this._Model = Order;
     this._Schema = OrderSchema;
 }

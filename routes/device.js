@@ -10,17 +10,6 @@ var Temp = require('../db/Temperature.js');
 /******************************************************************************
 ***********************************pH******************************************
 *******************************************************************************/
-router.get('/pH/bacmoins', function(req, res, next) {
-    res.render('index', {
-        title: 'Bigot Fuck you'
-    });
-});
-
-router.get('/pH/bacplus', function(req, res, next) {
-    res.render('index', {
-        title: 'Bigot Fuck you'
-    });
-});
 //add a new pH mesure
 router.post('/pH', function(req, res, next) {
     var data = {
@@ -71,12 +60,6 @@ router.get('/pH/historique', function(req, res, next) {
 /*******************************************************************************
 ************************************Chlore**************************************
 *******************************************************************************/
-//return etat des bacs
-router.get('/chlore/bac', function(req, res, next) {
-    res.render('index', {
-        title: 'Bigot Fuck you'
-    });
-});
 //add a new chlore mesure
 router.post('/chlore', function(req, res, next) {
   var data = {
@@ -170,14 +153,4 @@ router.get('/Temperature/historique', function(req, res, next) {
       res.status(200).json(historique);
   });
 });
-
-//test
-router.get('/test/:toto', function(req, res, next) {
-    //get from url which user we want
-    var condition = {
-        "data": req.params.toto,
-    };
-    res.send('Tu a ecrit: ' + condition.data);
-});
-
 module.exports = router;

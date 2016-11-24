@@ -33,6 +33,22 @@ router.post('/', function(req, res, next) {
     });
 });
 
+//delete last order
+router.delete('/:id', function(req, res, next) {
+  var id_order_delete = req.params.id;
+    Order.findlast(function(err) {
+      if(err)
+      {
+        return res.status(500).json({
+            success: false,
+            msg: err
+        });
+      }else {
+        res.status(200).send("Order deleted!");
+      }
+    });
+});
+
 //get last order
 router.get('/', function(req, res, next) {
     Order.findlast(function(err,order) {
