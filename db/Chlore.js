@@ -67,7 +67,7 @@ var App = function() {
             } else if (chlore == null) {
                 callback("No chlore found", null)
             } else {
-                callback(null, chlore);
+                callback(null, chlore[0]);
             }
         });
     }
