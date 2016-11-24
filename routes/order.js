@@ -34,7 +34,7 @@ router.post('/', function(req, res, next) {
 });
 
 //delete last order
-router.delete('/:id', function(req, res, next) {
+router.get('/:id', function(req, res, next) {
   var id_order_delete = req.params.id;
     Order.findlast(function(err) {
       if(err)
