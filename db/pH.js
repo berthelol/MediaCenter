@@ -77,7 +77,7 @@ var App = function() {
             } else if (ph == null) {
                 callback("No ph found", null)
             } else {
-                callback(null, ph);
+                callback(null, ph[0]);
             }
         });
     }
