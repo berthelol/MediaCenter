@@ -18,8 +18,8 @@ var UserSchema = new Schema({
     }
 });
 
-UserSchema.path('firstname').validate(function (v) {
-  return v.length > 5;
+UserSchema.path('firstname').validate(function(v) {
+    return v.length > 5;
 }, 'Error first name is under 5');
 
 var User = mongoose.model('User', UserSchema);
@@ -29,33 +29,43 @@ var App = function() {
     var self = this;
     //create a user
     this.add = function(data, callback) {
-      self.find(function(_err, user) {
-          //User already exist
-          if (user) {
-              callback("User already exist", null);
-          } else {
-              newuser = new User(data);
-              newuser.save(function(err) {
-                  if (err){
-                    callback(err, null);
-                  }else {
-                      callback(null, newuser);
-                  }                 
-              });
-          }
-      });
+        self.find(function(_err, user) {
+            //User already exist
+            if (user) {
+                UserSchema.findByIdAndUpdate(data.id, {
+                    $set: {
+                        firstname: data.firstname,
+                        lastname: data.lastname
+                    }
+                }, {
+                    new: true
+                }, function(err, modifieduser) {
+                    if (err) return handleError(err);
+                  callback(null, modifieduser);
+                });
+
+            } else {
+                newuser = new User(data);
+                newuser.save(function(err) {
+                    if (err) {
+                        callback(err, null);
+                    } else {
+                        callback(null, newuser);
+                    }
+                });
+            }
+        });
     };
     //find user
     this.find = function(callback) {
         User.findOne({}, function(err, user) {
-          if (err)
-          {
-            callback(err,null);
-          }else if(user == null){
-            callback("No user found",null)
-          }else {
-            callback(null, user);
-          }
+            if (err) {
+                callback(err, null);
+            } else if (user == null) {
+                callback("No user found", null)
+            } else {
+                callback(null, user);
+            }
         });
     };
     this._Model = User;

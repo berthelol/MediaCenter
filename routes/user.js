@@ -6,8 +6,9 @@ var Pool = require('../db/Pool.js');
 router.post('/', function(req, res, next) {
   var data = {
       firstname: req.body.firstname,
-      lastname: req.body.lastname
-  };  
+      lastname: req.body.lastname,
+      id:req.body.id
+  };
      User.add(data, function(err,user) {
         if (err) {
             return res.status(500).json({
