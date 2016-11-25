@@ -56,7 +56,7 @@ var App = function() {
             } else if (order == null) {
                 callback("No order found", null)
             } else {
-                callback(null, order);
+                callback(null, order[0]);
             }
         });
     };
