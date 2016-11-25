@@ -53,7 +53,7 @@ var App = function() {
             if (err) {
                 return callback(err.msg, null);
             }
-            callback(null, ChloreMap);
+            callback(null, historique);
 
         });
     };
