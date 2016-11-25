@@ -8,14 +8,8 @@ var OrderSchema = new Schema({
         type: String,
         required: [true, 'Why no ordername?']
     },
-    bac: {
-        which_bac: {
-            type: String,
-            enum: ['Chlore', 'pHmoins', 'pHplus']
-        },
-        mesure: {
-            type: Number
-        },
+    value: {
+        type: Number
     },
     time_of_order: Date
 });
@@ -27,10 +21,7 @@ var App = function() {
     this.add = function(data, callback) {
         order = new Order({
             ordername: data.ordername,
-            bac: {
-                which_bac: data.bac.which_bac,
-                mesure: data.bac.mesure
-            },
+            mesure: data.mesure,
             time_of_order: Date.now(),
         });
         order.save(function(err) {
@@ -52,7 +43,7 @@ var App = function() {
             if (err) {
                 return callback(err.msg, null);
             }
-            callback(null, OrderMap);
+            callback(null, historique);
         });
     };
     //find the last data
@@ -73,16 +64,15 @@ var App = function() {
     this.delete = function(id_to_remove, callback) {
         Order.find({
             _id: id_to_remove
-        }).remove(function(err,count) {
-          console.log(count);
-          if(err)
-          {
-            callback(err.msg);
-          }else if(count==0) {
-            callback("No order found with id: "+id_to_remove);
-          }else{
-            callback(null);
-          }
+        }).remove(function(err, count) {
+            console.log(count);
+            if (err) {
+                callback(err.msg);
+            } else if (count == 0) {
+                callback("No order found with id: " + id_to_remove);
+            } else {
+                callback(null);
+            }
         });
     };
     this._Model = Order;
