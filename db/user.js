@@ -29,7 +29,7 @@ var App = function() {
     var self = this;
     //create a user
     this.add = function(data, callback) {
-      console.log("data:"+data.id);
+      console.log("data:"+data.__id);
         self.find(function(_err, user) {
             //User already exist
             if (user) {

@@ -7,8 +7,9 @@ router.post('/', function(req, res, next) {
   var data = {
       firstname: req.body.firstname,
       lastname: req.body.lastname,
-      id:req.body.id
+      __id:req.body.__id
   };
+  console.log("JSON: "+ JSON.stringify(data));
      User.add(data, function(err,user) {
         if (err) {
             return res.status(500).json({
