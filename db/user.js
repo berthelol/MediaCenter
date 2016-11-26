@@ -35,7 +35,8 @@ var App = function() {
             if (user) {
                 User.findByIdAndUpdate(data.id, {
                     $set: {
-                        firstname: data.firstname
+                        firstname: data.firstname,
+                        lastname: data.lastname
                     }
                 }, {
                     new: true
