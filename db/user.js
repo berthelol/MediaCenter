@@ -32,7 +32,7 @@ var App = function() {
         self.find(function(_err, user) {
             //User already exist
             if (user) {
-                UserSchema.findByIdAndUpdate(data.id, {
+                User.findByIdAndUpdate(data.id, {
                     $set: {
                         firstname: data.firstname,
                         lastname: data.lastname
