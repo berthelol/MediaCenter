@@ -29,6 +29,7 @@ var App = function() {
     var self = this;
     //create a user
     this.add = function(data, callback) {
+      console.log("data:"+data);
         self.find(function(_err, user) {
             //User already exist
             if (user) {
@@ -40,6 +41,7 @@ var App = function() {
                     new: true
                 }, function(err, modifieduser) {
                     if (err) return handleError(err);
+                    console.log(modifieduser);
                   callback(null, modifieduser);
                 });
 
