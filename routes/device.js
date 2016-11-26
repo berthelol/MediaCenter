@@ -153,4 +153,10 @@ router.get('/Temperature/historique', function(req, res, next) {
       res.status(200).json(historique);
   });
 });
+
+//test
+router.post('/toto', function(req, res, next) {
+
+      res.send("coucou");
+});
 module.exports = router;
