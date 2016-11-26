@@ -30,7 +30,7 @@ var App = function() {
     //create a user
     this.add = function(data, callback) {
         self.find(function(_err, user) {
-            //User already exist
+            //User already exist then we modify it
             if (user) {
                 User.findByIdAndUpdate(data.id, {
                     $set: {
@@ -42,9 +42,8 @@ var App = function() {
                 }, function(err, modifieduser) {
                     if (err) return handleError(err);
                     console.log(modifieduser);
-                  callback(null, modifieduser);
+                    callback(null, modifieduser);
                 });
-
             } else {
                 newuser = new User(data);
                 newuser.save(function(err) {

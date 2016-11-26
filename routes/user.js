@@ -18,7 +18,7 @@ router.post('/', function(req, res, next) {
         }
         res.status(200).json({
             success: true,
-            msg: 'Successful created new user'
+            msg: 'Successful created new user.'
         });
     });
 });
@@ -41,8 +41,8 @@ router.get('/', function(req, res, next) {
 router.post('/pool', function(req, res, next) {
     var data = {
         size: req.body.size,
-        type: req.body.type,
-        heated: req.body.heated
+        heated: req.body.heated,
+        id: req.body.id
     };
     var pool = Pool.add(data, function(err,pool) {
         if (err) {
