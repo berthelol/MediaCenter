@@ -7,7 +7,7 @@ router.post('/', function(req, res, next) {
   var data = {
       firstname: req.body.firstname,
       lastname: req.body.lastname,
-      __id:req.body.__id
+      id:req.body.id
   };
   console.log("JSON: "+ JSON.stringify(data));
      User.add(data, function(err,user) {
