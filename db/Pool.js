@@ -28,8 +28,7 @@ var App = function() {
               }, {
                   new: true
               }, function(err, modifiedpool) {
-                  if (err) return handleError(err);
-                  console.log(modifiedpool);
+                  if (err) return handleError(err);                  
                   callback(null, modifiedpool);
               });
             } else {

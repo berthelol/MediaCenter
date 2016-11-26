@@ -40,8 +40,7 @@ var App = function() {
                 }, {
                     new: true
                 }, function(err, modifieduser) {
-                    if (err) return handleError(err);
-                    console.log(modifieduser);
+                    if (err) return handleError(err);                  
                     callback(null, modifieduser);
                 });
             } else {
