@@ -30,7 +30,6 @@ var App = function() {
             } else {
                 callback(null, order);
             }
-
         });
     };
     //find all historique
@@ -78,5 +77,4 @@ var App = function() {
     this._Model = Order;
     this._Schema = OrderSchema;
 }
-
 module.exports = new App();

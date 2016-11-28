@@ -24,37 +24,39 @@ var ChloreSchema = new Schema({
 });
 var Chlore = mongoose.model('Chlore', ChloreSchema);
 var App = function() {
-
     var self = this;
-
-
     //add a data
     this.add = function(data, callback) {
         chlore = new Chlore({
-            bac:data.bac,
-            mesure:data.mesure,
+            bac: data.bac,
+            mesure: data.mesure,
             time_of_mesure: Date.now(),
         });
         chlore.save(function(err) {
             if (err) {
                 callback(err, null);
-            }else {
+            } else {
                 callback(null, chlore);
             }
         });
     };
     //find all historique
-    this.findall = function(callback) {
+    /*this.findall = function(callback) {
         Chlore.find({}, function(err, historique) {
-            var ChloreMap = {};
-            historique.forEach(function(chlore) {
-                ChloreMap[chlore._id] = chlore;
-            });
             if (err) {
                 return callback(err.msg, null);
             }
             callback(null, historique);
-
+        });
+    };*/
+    this.findall = function(callback) {
+        Chlore.find().sort({
+            time_of_mesure: -1
+        }).limit(30).exec(function(err, historique) {
+            if (err) {
+                return callback(err.msg, null);
+            }
+            callback(null, historique);
         });
     };
     //find the last data
@@ -74,5 +76,4 @@ var App = function() {
     this._Model = Chlore;
     this._Schema = ChloreSchema;
 }
-
 module.exports = new App();

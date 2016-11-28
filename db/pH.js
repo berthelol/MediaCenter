@@ -36,13 +36,9 @@ var pHSchema = new Schema({
         max:14
     }
 });
-/*pHSchema.path('mesure').validate(function (v) {
- return (v>=0&&v<=14);
-}, 'Error pH not between 0 and 14');*/
 
 var pH = mongoose.model('pH', pHSchema);
 var App = function() {
-
     var self = this;
     //add a data
     this.add = function(data, callback) {
@@ -56,17 +52,23 @@ var App = function() {
         });
     };
     //find all historique
-    this.findall = function(callback) {
+  /*  this.findall = function(callback) {
         pH.find({}, function(err, historique) {
-            var pHMap = {};
-            historique.forEach(function(ph) {
-                pHMap[ph._id] = ph;
-            });
             if (err) {
                 return callback(err.msg, null);
             }
             callback(null, historique);
 
+        });
+    };*/
+    this.findall = function(callback) {
+        pH.find().sort({
+            time_of_mesure: -1
+        }).limit(30).exec(function(err, historique) {
+            if (err) {
+                return callback(err.msg, null);
+            }
+            callback(null, historique);
         });
     };
     //find the last data
@@ -84,5 +86,4 @@ var App = function() {
     this._Model = pH;
     this._Schema = pHSchema;
 }
-
 module.exports = new App();

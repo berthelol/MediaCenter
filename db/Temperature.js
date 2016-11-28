@@ -8,9 +8,7 @@ var Schema = mongoose.Schema;
       mesure: Number
   });
   var Temp = mongoose.model('Temp', TempSchema);
-
   var App = function() {
-
   	var self = this;
     //add a data
     this.add = function(datafrompost, callback) {
@@ -26,17 +24,23 @@ var Schema = mongoose.Schema;
         });
     };
     //find all historique
-    this.findall = function(callback) {
+    /*this.findall = function(callback) {
         Temp.find({}, function(err, historique) {
-            var TempMap = {};
-            historique.forEach(function(temp) {
-                TempMap[temp._id] = temp;
-            });
             if (err) {
                 return callback(err.msg, null);
             }
             callback(null, historique);
 
+        });
+    };*/
+    this.findall = function(callback) {
+        Temp.find().sort({
+            time_of_mesure: -1
+        }).limit(30).exec(function(err, historique) {
+            if (err) {
+                return callback(err.msg, null);
+            }
+            callback(null, historique);
         });
     };
     //find the last data
@@ -56,5 +60,4 @@ var Schema = mongoose.Schema;
   	this._Model = Temp;
   	this._Schema = TempSchema;
   }
-
   module.exports = new App();
