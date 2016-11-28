@@ -26,14 +26,14 @@ var Chlore = mongoose.model('Chlore', ChloreSchema);
 var App = function() {
 
     var self = this;
-    var today = new Date();
+    
 
     //add a data
     this.add = function(data, callback) {
         chlore = new Chlore({
             bac:data.bac,
             mesure:data.mesure,
-            time_of_mesure: today.toLocaleDateString() + ' ' + today.toLocaleTimeString(),
+            time_of_mesure: Date.now(),
         });
         chlore.save(function(err) {
             if (err) {
