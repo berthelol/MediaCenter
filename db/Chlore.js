@@ -56,6 +56,10 @@ var App = function() {
             if (err) {
                 return callback(err.msg, null);
             }
+            function custom_sort(a, b) {
+                return new Date(a.time_of_mesure).getTime() - new Date(b.time_of_mesure).getTime();
+            }
+            historique.sort(custom_sort);
             callback(null, historique);
         });
     };
