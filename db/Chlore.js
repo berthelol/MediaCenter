@@ -16,7 +16,7 @@ var ChloreSchema = new Schema({
         }
     },
     time_of_mesure: {
-        type: String
+        type: Date
     },
     mesure: {
         type: Number
@@ -26,7 +26,7 @@ var Chlore = mongoose.model('Chlore', ChloreSchema);
 var App = function() {
 
     var self = this;
-    
+
 
     //add a data
     this.add = function(data, callback) {
