@@ -41,7 +41,7 @@ router.delete('/', function(req, res, next) {
 //get last order
 router.get('/', function(req, res, next) {
     Order.findlast(function(err,order) {
-      if(err)
+      if(err||order==null)
       {
         return res.status(500).json({
             success: false,
