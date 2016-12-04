@@ -1,0 +1,14 @@
+server {
+   listen 80 ;
+  # root /home/pi/PoolcleanR;               # identifies the location of the application you are configuring
+   server_name loicberthelot.freeboxos.fr;                 # identifies the hostname used by this application's traffic
+  # server_name 10.4.77.71;  
+ location / {
+      proxy_pass http://localhost:3000;   # configures the back-end destination for this traffic
+      proxy_http_version 1.1;
+      proxy_set_header Upgrade $http_upgrade;
+      proxy_set_header Connection 'upgrade';
+      proxy_set_header Host $host;
+      proxy_cache_bypass $http_upgrade;
+   }
+}
